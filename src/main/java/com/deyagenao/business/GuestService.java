@@ -22,7 +22,12 @@ public class GuestService {
 		
 		List<Guest> guestList = new ArrayList<>();
 		guests.forEach(guest -> guestList.add(guest));
-		
+		guestList.sort((g1, g2) -> {
+			if(g1.getLastName().equals(g2.getLastName())) {
+				return g1.getFirstName().compareTo(g2.getFirstName());
+			}
+			return g1.getLastName().compareTo(g2.getLastName());
+		});
 		return guestList;
 	}
 }
