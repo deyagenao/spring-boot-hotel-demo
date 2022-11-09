@@ -30,4 +30,11 @@ public class GuestService {
 		});
 		return guestList;
 	}
+	
+	public void saveNewGuest(Guest newGuest) {
+		if (newGuest == null) {
+			throw new RuntimeException("Guest cannot be null");
+		}
+		this.guestRepository.save(newGuest);
+	}
 }

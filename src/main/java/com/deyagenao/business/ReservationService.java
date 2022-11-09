@@ -67,4 +67,14 @@ public class ReservationService {
         });
         return roomReservations;
     }
+	
+	public List<Room> getHotelRooms(){
+		Iterable<Room> rooms = this.roomRepository.findAll();
+		List<Room> hotelRooms = new ArrayList<>();
+		rooms.forEach(room -> hotelRooms.add(room));
+		hotelRooms.sort((r1, r2) -> 
+			 r1.getRoomNumber().compareTo(r2.getRoomNumber())
+		);
+		return hotelRooms;
+	}
 }
